@@ -1,0 +1,19 @@
+default:
+    suites:
+        default:
+            contexts:
+                - Core\Infrastructure\Tests\Behat\Context\ProductContext
+                - Shared\Infrastructure\Tests\Behat\Context\DatabaseContext
+                - Shared\Infrastructure\Tests\Behat\Context\RestErrorContext
+                - Shared\Infrastructure\Tests\Behat\Context\JsonContext
+                - Shared\Infrastructure\Tests\Behat\Context\RestContext
+                - Shared\Infrastructure\Tests\Behat\Context\HateoasContext
+                - Behat\MinkExtension\Context\MinkContext
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension: null
+        Behat\MinkExtension:
+            base_url: http://service-nginx:80/
+            sessions:
+                symfony:
+                    symfony: ~

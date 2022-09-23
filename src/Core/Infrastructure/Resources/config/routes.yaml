@@ -1,0 +1,12 @@
+add_product_list:
+    path: /products
+    controller: Core\Ui\Http\AddProductListController::execute
+    methods: POST
+get_product:
+    path: /products/{sku}
+    controller: Core\Ui\Http\GetProductController::execute
+    methods: GET
+get_product_list:
+    path: /products
+    controller: Core\Ui\Http\GetProductListController::execute
+    methods: GET

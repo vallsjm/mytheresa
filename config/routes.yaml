@@ -1,0 +1,2 @@
+core_routes:
+    resource: '../src/Core/Infrastructure/Resources/config/routes.yaml'
