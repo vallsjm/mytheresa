@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22aaee7f-f0c5-4443-ad7a-69864cf7dacd" name="Default Changelist" comment="" />
+    <list default="true" id="22aaee7f-f0c5-4443-ad7a-69864cf7dacd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +13,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -185,7 +191,8 @@
       <workItem from="1663263612640" duration="1586000" />
       <workItem from="1663762088225" duration="21121000" />
       <workItem from="1663832238285" duration="23591000" />
-      <workItem from="1663929059937" duration="16031000" />
+      <workItem from="1663929059937" duration="18294000" />
+      <workItem from="1664182931803" duration="1717000" />
     </task>
     <servers />
   </component>

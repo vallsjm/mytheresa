@@ -26,6 +26,22 @@ Github.
 make install
 ```
 
+### ✍️ Solution Explanation
+
+The current solution are using Doctrine as ORM and Behat testing to functional.  
+
+The discounts are applied to products using a Middelware pattern on save products. It's scalable and easy, you can add new discounts very quickly.
+
+If you wanna improve the performance, I recommend to use ElasticSearch or Algolia for the product filtering inside the GET product list endpoint.
+
+In the GET a single product endpoint, we can use Redis in key::value mode to save the product as cache.
+
+We can use preSave callbacks inside Doctrine ORM to sync all Redis or ElasticSearch on any product change.
+
+The bulk product list endpoint can be improved using an Async Job Queue. The product list can be splinted in Jobs with 5000 products each one.  
+
+![Proposal Architecture](doc/mytheresa-challenge.png?raw=true "Proposal Architecture")
+   
 ### ✅ Tests execution
 
 I am using behat in order to make the functional test. 
@@ -38,6 +54,7 @@ make behat
 0m0.86s (38.31Mb)
 ```
 
+
 ### 🛠️ Folder structure
 
 ```scala
@@ -46,10 +63,11 @@ $ tree -L 4 src
 src
 ├── Core // Bounded Context: Features related to one of the company business discounts / products
 │   ├── Application
-│   │   ├── DiscountRules // Product Discount Ruleas folder 
+│   │   ├── DiscountRules // Product Discount Ruleas folder
+│   │   │   ├── DiscountRuleInterface.php
 │   │   │   ├── GetDiscountInProductsWithBootsCategory.php
 │   │   │   └── GetDiscountInProductsWithSkuEquals3.php
-│   │   └── UseCase // Inside the application layer all is structured by actions
+│   │   └── UseCase  // Inside the application layer all is structured by actions
 │   │       ├── AddProductListUseCase.php
 │   │       ├── AddProductUseCase.php
 │   │       ├── CalculateProductDiscountUseCase.php
@@ -60,6 +78,8 @@ src
 │   │   │   ├── Price.php
 │   │   │   └── Product.php
 │   │   ├── Exception
+│   │   │   ├── ProductAlreadyExistsException.php
+│   │   │   ├── ProductBadRequestException.php
 │   │   │   └── ProductNotFoundException.php
 │   │   ├── Filter
 │   │   │   ├── ProductFilterInterface.php
@@ -77,14 +97,14 @@ src
 │   │   │   └── config
 │   │   ├── Serializer
 │   │   │   └── PriceNormalizer.php
-│   │   └── Tests // Behat context related with the company bounded context
-│   │       └── Behat
+│   │   └── Tests
+│   │       └── Behat // Behat context related with the company bounded context
 │   └── Ui
-│       └── Http // Endpoint controllers
+│       └── Http
 │           ├── AddProductListController.php
 │           ├── GetProductController.php
 │           └── GetProductListController.php
-└── Shared // Shared Kernel: Common infrastructure and domain shared between the different Bounded Contexts
+└── Shared // Endpoint controllers
     └── Infrastructure
         ├── Filter
         │   ├── FilterResponse.php
@@ -95,10 +115,12 @@ src
         │   └── Representation.php
         ├── Resources
         │   └── config
+        ├── Serializer
+        │   └── RepresentationNormalizer.php
         ├── Service
         │   └── ResponseService.php
-        └── Tests  // Shared behat context
-            └── Behat
+        └── Tests
+            └── Behat // Shared behat context
 ```
 
 ### POST /products
